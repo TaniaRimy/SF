@@ -46,7 +46,38 @@ public class Shared_Class implements Webelement_Repository{
     {
         driver.findElement(By.xpath(tabNameWebElement)).click();
         Delay(2000);
-        if(driver.getTitle().contains(tabName))
+        confirmNavigationByTab(tabName);
+    }
+
+    public void navigateAdminSubmenu(String menu, String submenu, String submenuTitle)
+    {
+        if(isElementPresent(By.xpath(submenu)))
+            driver.findElement(By.xpath(submenu)).click();
+        else
+        {
+            driver.findElement(By.xpath(menu)).click();
+            driver.findElement(By.xpath(submenu)).click();
+        }
+        driver.findElement(By.xpath(menu)).click();
+        if(isElementPresent(By.xpath(submenuTitle)))
+            print("Navigation Successfully Done!!");
+        else
+            print("Navigation not Done!!");
+
+    }
+
+    private boolean isElementPresent(By by) {
+        try {
+            driver.findElement(by);
+            return true;
+        } catch (NoSuchElementException e) {
+            return false;
+        }
+    }
+
+    public void confirmNavigationByTab(String item)
+    {
+        if(driver.getTitle().contains(item))
             print("Navigation Successfully Done!!");
         else
             print("Navigation not Done!!");
