@@ -10,8 +10,8 @@ public class Managing_Notes_Type extends Shared_Class implements Webelement_Repo
     public void managingNotesType() {
 
         setup_Launch_Browser();
-        logIn();
+        logIn(ygold_userID, user_password);
         topTabNavigation(xpath_admin_button, "Admin");
-        navigateAdminSubmenu(xpath_menu_feature_configuration, xpath_submenu_notetypes, xpath_submenuTitle_notetypes);
+        navigateAdminSubmenu(id_menu_feature_configuration, id_submenu_notetypes, xpath_submenuTitle_notetypes);
     }
 }
